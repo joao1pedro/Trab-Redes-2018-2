@@ -8,6 +8,7 @@ public class TCPServer {
 			while(true) {
 				Socket clientSocket = listenSocket.accept();
 				Connection c = new Connection(clientSocket);
+				System.out.println("Reply: Connection established");
 			}
 		} catch(IOException e) {System.out.println("Listen socket:"+e.getMessage());}
 	}
