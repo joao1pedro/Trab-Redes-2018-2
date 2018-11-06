@@ -8,7 +8,6 @@ public class TCPServer {
 			while(true) {
 				Socket clientSocket = listenSocket.accept();
 				Connection c = new Connection(clientSocket);
-				System.out.println("Reply: Connection established");
 			}
 		} catch(IOException e) {System.out.println("Listen socket:"+e.getMessage());}
 	}
@@ -29,7 +28,8 @@ class Connection extends Thread {
 		try {			                 // an echo server
 
 			String data = in.readUTF();	                  // read a line of data from the stream
-			out.writeUTF(data);
+			out.writeUTF(data +"We will make it");
+			System.out.println("Reply: Connection established");
 		}catch (EOFException e){System.out.println("EOF:"+e.getMessage());
 		} catch(IOException e) {System.out.println("readline:"+e.getMessage());
 		} finally{ try {clientSocket.close();}catch (IOException e){/*close failed*/}}
