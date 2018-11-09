@@ -1,6 +1,6 @@
 import java.net.*;
 import java.io.*;
-public class TCPClient {
+public class Q1TCPClient {
 	public static void main (String args[]) {
 		// arguments supply message and hostname
 		Socket s = null;
@@ -9,8 +9,7 @@ public class TCPClient {
 			s = new Socket("localhost", serverPort);    
 			DataInputStream in = new DataInputStream( s.getInputStream());
 			DataOutputStream out =new DataOutputStream( s.getOutputStream());
-			// mensagem que sera mandanda para o server
-			out.writeUTF("toServer");      	// UTF is a string encoding see Sn. 4.4
+			out.writeUTF(args[0]);      	// UTF is a string encoding see Sn. 4.4
 			String data = in.readUTF();	    // read a line of data from the stream
 			System.out.println("Received: "+ data) ; 
 		}catch (UnknownHostException e){System.out.println("Socket:"+e.getMessage());

@@ -13,8 +13,7 @@ public class UDPServer{
     			DatagramPacket reply = new DatagramPacket(request.getData(), request.getLength(), 
     				request.getAddress(), request.getPort());
     			aSocket.send(reply);
-    			String str = new String("Mensagem recebida");
-    			System.out.println("Reply: " + str);
+    			System.out.println("Server: " + "mensagem recebida");
     		}
 		}catch (SocketException e){System.out.println("Socket: " + e.getMessage());
 		}catch (IOException e) {System.out.println("IO: " + e.getMessage());

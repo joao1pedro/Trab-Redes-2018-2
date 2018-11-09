@@ -30,8 +30,7 @@ class Connection extends Thread {
 	public void run(){
 		try {			                 // an echo server
 			String data = in.readUTF();	                  // read a line of data from the stream
-			//metodo para pegar o dia do mes e de acordo com este, retornar a frase do dia
-			// apos realizar comparacoes
+			//Gambiarra p/ pegar retornar uma mensagem especifica p/ cada dia do mes
 			writeOut();
 			System.out.println("Connection succefull");
 		}catch (EOFException e){System.out.println("EOF:"+e.getMessage());

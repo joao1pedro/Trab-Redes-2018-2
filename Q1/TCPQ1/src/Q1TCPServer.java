@@ -1,6 +1,6 @@
 import java.net.*;
 import java.io.*;
-public class TCPServer {
+public class Q1TCPServer {
 	public static void main (String args[]) {
 		try{
 			int serverPort = 7896; // the server port
@@ -28,8 +28,8 @@ class Connection extends Thread {
 		try {			                 // an echo server
 
 			String data = in.readUTF();	                  // read a line of data from the stream
-			out.writeUTF(data +"We will make it");
-			System.out.println("Reply: Connection established");
+			out.writeUTF(data);
+			System.out.println("Connection succefull");
 		}catch (EOFException e){System.out.println("EOF:"+e.getMessage());
 		} catch(IOException e) {System.out.println("readline:"+e.getMessage());
 		} finally{ try {clientSocket.close();}catch (IOException e){/*close failed*/}}

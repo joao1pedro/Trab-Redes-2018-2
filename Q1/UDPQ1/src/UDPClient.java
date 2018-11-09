@@ -6,8 +6,8 @@ public class UDPClient{
 		DatagramSocket aSocket = null;
 		try {
 			aSocket = new DatagramSocket();
-			byte [] m = ("Eng. Computação").getBytes();
-			InetAddress aHost = InetAddress.getByName("");
+			byte [] m = ("Engenharia da Computação").getBytes();
+			InetAddress aHost = InetAddress.getByName("localhost");
 			int serverPort = 6789;		                                                 
 			DatagramPacket request =
 			 	new DatagramPacket(m,  m.length, aHost, serverPort);
