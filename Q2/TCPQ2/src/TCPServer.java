@@ -30,7 +30,6 @@ class Connection extends Thread {
 	public void run(){
 		try {			                 // an echo server
 			String data = in.readUTF();	                  // read a line of data from the stream
-			//Gambiarra p/ pegar retornar uma mensagem especifica p/ cada dia do mes
 			writeOut();
 			System.out.println("Connection succefull");
 		}catch (EOFException e){System.out.println("EOF:"+e.getMessage());
@@ -40,10 +39,20 @@ class Connection extends Thread {
 
 	}
 	
+	//métdo separado para verificar a data atual e procurar a frase correta 
+	// p/ o dia atual
 	public void writeOut() throws IOException{
+		//criação de um objeto date cujo recebe a data atual juntamente a hora e dia da semana
 		Date date = new Date();
+		// converte o objeto date em um local date, pois localDate permite pegarmos
+		// elementos separados da data, como no caso o dia do mês
+		// pois tento o dia do mes atual em mãos, podemos verificar
+		// e por fim devolver a frase correspondente ao dia atual		
 		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		// cria uma variavel inteira day que recebe o dia do mês
 		int day   = localDate.getDayOfMonth();
+		// faz a verificação de qual o dia atual, e busca a frase correspondente a ele
+		// por fim, escreve a frase correta cuja o servidor devolve para o cliente
 		if(day == 1) {
 			out.writeUTF("Servidor -- FRASE DIA 1--" + date);
 		}

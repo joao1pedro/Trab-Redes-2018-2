@@ -1,0 +1,3 @@
+- Definições:
+  - Um datagrama é uma unidade de transferência básica associada a uma rede de comutação de pacotes em que entrega, hora de chegada, e a ordem não são garantidos. 
+  - Socket é um mecanismo  de comunicação, usado normalmente para implementar um modelo cliente/servidor, que permite a troca de mensagens entre os processos de uma máquina/aplicação servidor e de uma máquina/aplicação cliente.
