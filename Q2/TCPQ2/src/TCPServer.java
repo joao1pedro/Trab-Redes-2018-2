@@ -29,122 +29,112 @@ class Connection extends Thread {
 	}
 	public void run(){
 		try {			                 // an echo server
-			String data = in.readUTF();	                  // read a line of data from the stream
-			writeOut();
+			String data = in.readUTF();
+			Date date = new Date(); //cria variavel do tipo data
+			
+			//verifica se a mensagem que recebeu do cliente
+			//é igual a algum comando que o servidor interpreta
+			//para retornar a resposta + data
+			if(data.trim().equals("cmd1")) {
+				out.writeUTF("Servidor -- FRASE 1 --" + date);
+			}
+			else if(data.trim().equals("cmd2")) {
+				out.writeUTF("Servidor -- FRASE 2 --" + date);
+			}
+			else if(data.trim().equals("cmd3")) {
+				out.writeUTF("Servidor -- FRASE 3 --" + date);
+			}
+			else if(data.trim().equals("cmd4")){
+				out.writeUTF("Servidor -- FRASE 4 --" + date);
+			}
+			else if(data.trim().equals("cmd5")){
+				out.writeUTF("Servidor -- FRASE 5 --" + date);
+			}
+			else if(data.trim().equals("cmd6")){
+				out.writeUTF("Servidor -- FRASE 6 --" + date);
+			}
+			else if(data.trim().equals("cmd7")){
+				out.writeUTF("Servidor -- FRASE 7 --" + date);
+			}
+			else if(data.trim().equals("cmd8")){
+				out.writeUTF("Servidor -- FRASE 8 --" + date);
+			}
+			else if(data.trim().equals("cmd9")){
+				out.writeUTF("Servidor -- FRASE 9 --" + date);
+			}
+			else if(data.trim().equals("cmd10")){
+				out.writeUTF("Servidor -- FRASE 10 --" + date);
+			}
+			else if(data.trim().equals("cmd11")){
+				out.writeUTF("Servidor -- FRASE 11 --" + date);
+			}
+			else if(data.trim().equals("cmd12")){
+				out.writeUTF("Servidor -- FRASE 12 --" + date);
+			}
+			else if(data.trim().equals("cmd13")){
+				out.writeUTF("Servidor -- FRASE 13 --" + date);
+			}
+			else if(data.trim().equals("cmd14")){
+				out.writeUTF("Servidor -- FRASE 14--" + date);
+			}
+			else if(data.trim().equals("cmd15")){
+				out.writeUTF("Servidor -- FRASE 15 --" + date);
+			}
+			else if(data.trim().equals("cmd16")){
+				out.writeUTF("Servidor -- FRASE 16 --" + date);
+			}
+			else if(data.trim().equals("cmd17")){
+				out.writeUTF("Servidor -- FRASE 17 --" + date);
+			}
+			else if(data.trim().equals("cmd18")){
+				out.writeUTF("Servidor -- FRASE 18 --" + date);
+			}
+			else if(data.trim().equals("cmd19")){
+				out.writeUTF("Servidor -- FRASE 19 --" + date);
+			}
+			else if(data.trim().equals("cmd20")){
+				out.writeUTF("Servidor -- FRASE 20 --" + date);
+			}
+			else if(data.trim().equals("cmd21")){
+				out.writeUTF("Servidor -- FRASE 21 --" + date);
+			}
+			else if(data.trim().equals("cmd22")){
+				out.writeUTF("Servidor -- FRASE 22 --" + date);
+			}
+			else if(data.trim().equals("cmd23")){
+				out.writeUTF("Servidor -- FRASE 23 --" + date);
+			}
+			else if(data.trim().equals("cmd24")){
+				out.writeUTF("Servidor -- FRASE 24 --" + date);
+			}
+			else if(data.trim().equals("cmd25")){
+				out.writeUTF("Servidor -- FRASE 25 --" + date);
+			}
+			else if(data.trim().equals("cmd26")){
+				out.writeUTF("Servidor -- FRASE 26 --" + date);
+			}
+			else if(data.trim().equals("cmd27")){
+				out.writeUTF("Servidor -- FRASE 27 --" + date);
+			}
+			else if(data.trim().equals("cmd28")){
+				out.writeUTF("Servidor -- FRASE 28 --" + date);
+			}
+			else if(data.trim().equals("cmd29")){
+				out.writeUTF("Servidor -- FRASE 29 --" + date);
+			}
+			else if(data.trim().equals("cmd30")){
+				out.writeUTF("Servidor -- FRASE 30 --" + date);
+			}
+			else if(data.trim().equals("cmd31")){
+				out.writeUTF("Servidor -- FRASE 31 --" + date);
+			}else {
+				out.writeUTF("Servidor -- Invalid command!");
+			}
 			System.out.println("Connection succefull");
 		}catch (EOFException e){System.out.println("EOF:"+e.getMessage());
 		} catch(IOException e) {System.out.println("readline:"+e.getMessage());
 		} finally{ try {clientSocket.close();}catch (IOException e){/*close failed*/}}
 		
 
-	}
-	
-	//métdo separado para verificar a data atual e procurar a frase correta 
-	// p/ o dia atual
-	public void writeOut() throws IOException{
-		//criação de um objeto date cujo recebe a data atual juntamente a hora e dia da semana
-		Date date = new Date();
-		// converte o objeto date em um local date, pois localDate permite pegarmos
-		// elementos separados da data, como no caso o dia do mês
-		// pois tento o dia do mes atual em mãos, podemos verificar
-		// e por fim devolver a frase correspondente ao dia atual		
-		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		// cria uma variavel inteira day que recebe o dia do mês
-		int day   = localDate.getDayOfMonth();
-		// faz a verificação de qual o dia atual, e busca a frase correspondente a ele
-		// por fim, escreve a frase correta cuja o servidor devolve para o cliente
-		if(day == 1) {
-			out.writeUTF("Servidor -- FRASE DIA 1--" + date);
-		}
-		else if(day == 2) {
-			out.writeUTF("Servidor -- FRASE DIA 2 --" + date);
-		}
-		else if(day == 3) {
-			out.writeUTF("Servidor -- FRASE DIA 3--" + date);
-		}
-		else if(day == 4) {
-			out.writeUTF("Servidor -- FRASE DIA 4--" + date);
-		}
-		else if(day == 5) {
-			out.writeUTF("Servidor -- FRASE DIA 5 --" + date);
-		}
-		else if(day == 6) {
-			out.writeUTF("Servidor -- FRASE DIA 6 --" + date);
-		}
-		else if(day == 7) {
-			out.writeUTF("Servidor -- FRASE DIA 7 --" + date);
-		}
-		else if(day == 8) {
-			out.writeUTF("Servidor -- FRASE DIA 8 --" + date);
-		}
-		else if(day == 9) {
-			out.writeUTF("Servidor -- FRASE DIA 9 --" + date);
-		}
-		else if(day == 10) {
-			out.writeUTF("Servidor -- FRASE DIA 10 --" + date);
-		}
-		else if(day == 11) {
-			out.writeUTF("Servidor -- FRASE DIA 11 --" + date);
-		}
-		else if(day == 12) {
-			out.writeUTF("Servidor -- FRASE DIA 12 --" + date);
-		}
-		else if(day == 13) {
-			out.writeUTF("Servidor -- FRASE DIA 13 --" + date);
-		}
-		else if(day == 14) {
-			out.writeUTF("Servidor -- FRASE DIA 14--" + date);
-		}
-		else if(day == 15) {
-			out.writeUTF("Servidor -- FRASE DIA 15 --" + date);
-		}
-		else if(day == 16) {
-			out.writeUTF("Servidor -- FRASE DIA 16 --" + date);
-		}
-		else if(day == 17) {
-			out.writeUTF("Servidor -- FRASE DIA 17 --" + date);
-		}
-		else if(day == 18) {
-			out.writeUTF("Servidor -- FRASE DIA 18 --" + date);
-		}
-		else if(day == 19) {
-			out.writeUTF("Servidor -- FRASE DIA 19 --" + date);
-		}
-		else if(day == 20) {
-			out.writeUTF("Servidor -- FRASE DIA 20 --" + date);
-		}
-		else if(day == 21) {
-			out.writeUTF("Servidor -- FRASE DIA 21 --" + date);
-		}
-		else if(day == 22) {
-			out.writeUTF("Servidor -- FRASE DIA 22 --" + date);
-		}
-		else if(day == 23) {
-			out.writeUTF("Servidor -- FRASE DIA 23 --" + date);
-		}
-		else if(day == 24) {
-			out.writeUTF("Servidor -- FRASE DIA 24 --" + date);
-		}
-		else if(day == 25) {
-			out.writeUTF("Servidor -- FRASE DIA 25 --" + date);
-		}
-		else if(day == 26) {
-			out.writeUTF("Servidor -- FRASE DIA 26 --" + date);
-		}
-		else if(day == 27) {
-			out.writeUTF("Servidor -- FRASE DIA 27 --" + date);
-		}
-		else if(day == 28) {
-			out.writeUTF("Servidor -- FRASE DIA 28 --" + date);
-		}
-		else if(day == 29) {
-			out.writeUTF("Servidor -- FRASE DIA 29 --" + date);
-		}
-		else if(day == 30) {
-			out.writeUTF("Servidor -- FRASE DIA 30 --" + date);
-		}
-		else if(day == 31) {
-			out.writeUTF("Servidor -- FRASE DIA 31 --" + date);
-		}
 	}
 }
